@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 import ChooseAiModel from './Components/Pages/HomePage/ChooseAiModel';
 import Footer from './Components/Pages/HomePage/Footer';
 import Hero from './Components/Pages/HomePage/Hero';
@@ -49,6 +50,17 @@ const App = () => {
       <Hero />
       <ChooseAiModel models={models} isLoading={isLoading} error={error} />
       <Footer />
+      <ToastContainer
+        position="top-right"
+        autoClose={2600}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
+        draggable={false}
+        theme="light"
+      />
     </div>
   );
 };

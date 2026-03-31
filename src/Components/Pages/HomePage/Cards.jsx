@@ -185,10 +185,9 @@ const Cards = ({ itemData, isSubscribed, onSubscribe }) => {
         <button
           type="button"
           onClick={() => onSubscribe(itemData)}
-          disabled={isSubscribed}
           className={`mt-6 w-full rounded-2xl px-5 py-3.5 text-base font-semibold text-white transition ${
             isSubscribed
-              ? 'cursor-not-allowed bg-red-600'
+              ? 'bg-red-600'
               : 'bg-zinc-950 hover:bg-red-600'
           }`}
         >

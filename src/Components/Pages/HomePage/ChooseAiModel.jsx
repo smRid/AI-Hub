@@ -1,9 +1,22 @@
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 import Cards from "./Cards";
 
 const loadingCards = Array.from({ length: 6 }, (_, index) => index);
 const CART_STORAGE_KEY = "ai-hub-cart";
 const SUBSCRIPTIONS_STORAGE_KEY = "ai-hub-subscriptions";
+const successToastOptions = {
+  iconTheme: {
+    primary: "#22c55e",
+    secondary: "#ffffff",
+  },
+};
+const errorToastOptions = {
+  iconTheme: {
+    primary: "#ef4444",
+    secondary: "#ffffff",
+  },
+};
 
 const ChooseAiModel = ({ models, isLoading, error }) => {
   const [activeTab, setActiveTab] = useState("models");
@@ -48,20 +61,42 @@ const ChooseAiModel = ({ models, isLoading, error }) => {
   const cartTotal = cartModels.reduce((sum, item) => sum + (item.price || 0), 0);
 
   const handleSubscribe = (item) => {
+    if (item.isFree) {
+      if (subscribedItems.includes(item.id)) {
+        toast.error("Already subscribed!", errorToastOptions);
+        return;
+      }
+
+      setSubscribedItems((current) => [...current, item.id]);
+      toast.success("Subscription activated!", successToastOptions);
+      return;
+    }
+
+    if (cartItems.includes(item.id)) {
+      toast.error("Item already in cart!", errorToastOptions);
+      return;
+    }
+
     setSubscribedItems((current) =>
       current.includes(item.id) ? current : [...current, item.id]
     );
-
-    if (!item.isFree) {
-      setCartItems((current) =>
-        current.includes(item.id) ? current : [...current, item.id]
-      );
-    }
+    setCartItems((current) => [...current, item.id]);
+    toast.success("Item added to cart!", successToastOptions);
   };
 
   const handleRemoveFromCart = (itemId) => {
     setCartItems((current) => current.filter((id) => id !== itemId));
     setSubscribedItems((current) => current.filter((id) => id !== itemId));
+    toast.success("Item deleted!", successToastOptions);
+  };
+
+  const handleCheckout = () => {
+    if (!cartModels.length) {
+      return;
+    }
+
+    setCartItems([]);
+    toast.success("Payment successful!", successToastOptions);
   };
 
   return (
@@ -195,7 +230,7 @@ const ChooseAiModel = ({ models, isLoading, error }) => {
                       className="text-3xl leading-none text-zinc-300 transition hover:text-red-500"
                       aria-label={`Remove ${item.title} from cart`}
                     >
-                      ×
+                      &times;
                     </button>
                   </div>
                 </div>
@@ -214,6 +249,7 @@ const ChooseAiModel = ({ models, isLoading, error }) => {
 
           <button
             type="button"
+            onClick={handleCheckout}
             disabled={cartModels.length === 0}
             className={`mt-10 w-full rounded-[24px] px-8 py-5 text-2xl font-semibold text-white transition ${
               cartModels.length === 0
