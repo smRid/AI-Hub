@@ -54,12 +54,12 @@ const getInitials = title =>
     .map(word => word.charAt(0).toUpperCase())
     .join('');
 
-const getPriceLabel = itemData => {
+const getPriceLabel = (itemData, isSubscribed) => {
   if (itemData.isFree) {
     return {
       value: 'Free',
       suffix: 'Forever',
-      action: 'Start Free',
+      action: isSubscribed ? 'Subscribed' : 'Subscribe Now',
       note: 'No monthly billing',
     };
   }
@@ -67,7 +67,7 @@ const getPriceLabel = itemData => {
   return {
     value: `$${itemData.price}`,
     suffix: '/month',
-    action: 'Subscribe',
+    action: isSubscribed ? 'Subscribed' : 'Subscribe Now',
     note: 'Billed monthly',
   };
 };
@@ -99,7 +99,7 @@ const LogoBadge = ({ image, slug, title }) => {
   );
 };
 
-const Cards = ({ itemData }) => {
+const Cards = ({ itemData, isSubscribed, onSubscribe }) => {
   const status = statusStyles[itemData.status] ?? {
     label: 'Available',
     className: 'border-zinc-200 bg-zinc-100 text-zinc-700',
@@ -107,7 +107,7 @@ const Cards = ({ itemData }) => {
   const category = categoryLabels[itemData.category] ?? 'AI Platform';
   const accent =
     accentStyles[itemData.category] ?? 'from-zinc-50 via-white to-zinc-100';
-  const pricing = getPriceLabel(itemData);
+  const pricing = getPriceLabel(itemData, isSubscribed);
 
   return (
     <article className="group flex h-full flex-col rounded-[28px] border border-zinc-200 bg-white p-5 shadow-[0_20px_60px_-35px_rgba(15,23,42,0.35)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_-34px_rgba(239,68,68,0.35)]">
@@ -166,7 +166,11 @@ const Cards = ({ itemData }) => {
               Price
             </p>
             <div className="mt-3 flex items-end gap-2">
-              <span className="text-4xl font-semibold tracking-tight text-zinc-950">
+              <span
+                className={`text-4xl font-semibold tracking-tight ${
+                  itemData.isFree ? 'text-emerald-500' : 'text-zinc-950'
+                }`}
+              >
                 {pricing.value}
               </span>
               <span className="pb-1 text-lg text-zinc-400">{pricing.suffix}</span>
@@ -178,7 +182,16 @@ const Cards = ({ itemData }) => {
           </div>
         </div>
 
-        <button className="mt-6 w-full rounded-2xl bg-zinc-950 px-5 py-3.5 text-base font-semibold text-white transition hover:bg-red-600">
+        <button
+          type="button"
+          onClick={() => onSubscribe(itemData)}
+          disabled={isSubscribed}
+          className={`mt-6 w-full rounded-2xl px-5 py-3.5 text-base font-semibold text-white transition ${
+            isSubscribed
+              ? 'cursor-not-allowed bg-red-600'
+              : 'bg-zinc-950 hover:bg-red-600'
+          }`}
+        >
           {pricing.action}
         </button>
       </div>

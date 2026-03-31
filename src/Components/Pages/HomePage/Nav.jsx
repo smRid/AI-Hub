@@ -1,11 +1,9 @@
-const logo = '/assets/logo.png';
-
-const Nav = () => {
+const NavBar = () => {
   return (
-    <div className="navbar">
+    <div className="containers navbar">
       <div className="navbar-start">
         <div className="flex items-center gap-1 font-bold text-xl">
-          <img className="w-10" src={logo} alt="AI Hub logo" /> Ai Hub
+          <img className="w-10" src="/assets/logo.png" alt="AI Hub logo" /> Ai Hub
         </div>
       </div>
       <div className="navbar-center hidden md:flex">
@@ -25,10 +23,10 @@ const Nav = () => {
         </ul>
       </div>
       <div className="navbar-end gap-5">
-        <a className="btn bg-red-500 rounded-full text-white">Get in Touch</a>
+        <a className="btn rounded-full bg-red-500 text-white">Get in Touch</a>
       </div>
     </div>
   );
 };
 
-export default Nav;
+export default NavBar;
