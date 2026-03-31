@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at top, rgba(254, 226, 226, 0.7), transparent 30%),
+      linear-gradient(180deg, #fff7f5 0%, #ffffff 24%, #fffaf8 100%);
+    color: #18181b;
+    font-family: "Trebuchet MS", "Avenir Next", "Segoe UI", sans-serif;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+@layer utilities {
+  .containers {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-inline: 1rem;
+  }
+}

@@ -1,0 +1,123 @@
+[
+  {
+    "id": 1,
+    "slug": "chatgpt",
+    "title": "ChatGPT",
+    "description": "The world's most popular AI assistant by OpenAI. Versatile for writing, coding, reasoning, and creative tasks.",
+    "price": 20,
+    "isFree": false,
+    "category": "assistant",
+    "image": "/assets/logos/ChatGPT_logo.svg.png",
+    "status": "popular"
+  },
+  {
+    "id": 2,
+    "slug": "grok",
+    "title": "Grok",
+    "description": "Built by xAI with real-time knowledge from X. Helpful, witty, and truth-seeking AI assistant.",
+    "price": 30,
+    "isFree": false,
+    "category": "assistant",
+    "image": "/assets/logos/grok-seeklogo-.svg",
+    "status": "favourite"
+  },
+  {
+    "id": 3,
+    "slug": "deepseek",
+    "title": "DeepSeek",
+    "description": "Powerful AI focused on coding, math, and efficient reasoning. Known for open and cost-effective models.",
+    "price": 0,
+    "isFree": true,
+    "category": "model",
+    "image": "/assets/logos/Deepseek-logo-icon.svg.png",
+    "status": "trending"
+  },
+  {
+    "id": 4,
+    "slug": "gemini",
+    "title": "Gemini",
+    "description": "Google's multimodal AI with strong reasoning and deep integration into Google services.",
+    "price": 20,
+    "isFree": false,
+    "category": "assistant",
+    "image": "/assets/logos/gemini.svg",
+    "status": "popular"
+  },
+  {
+    "id": 5,
+    "slug": "claude",
+    "title": "Claude",
+    "description": "Anthropic's AI known for safety, long-context understanding, and high-quality writing and analysis.",
+    "price": 20,
+    "isFree": false,
+    "category": "assistant",
+    "image": "/assets/logos/claude-ai-icon.webp",
+    "status": "favourite"
+  },
+  {
+    "id": 6,
+    "slug": "kimi",
+    "title": "Kimi",
+    "description": "Moonshot AI's fast and capable assistant with strong long-context processing and creative abilities.",
+    "price": 0,
+    "isFree": true,
+    "category": "assistant",
+    "image": "/assets/logos/kimi-logo.png",
+    "status": "trending"
+  },
+  {
+    "id": 7,
+    "slug": "perplexity",
+    "title": "Perplexity",
+    "description": "AI-powered search engine delivering accurate answers with real-time sources and citations.",
+    "price": 20,
+    "isFree": false,
+    "category": "search",
+    "image": "/assets/logos/perplexity-ai-icon.webp",
+    "status": "popular"
+  },
+  {
+    "id": 8,
+    "slug": "mistral",
+    "title": "Mistral",
+    "description": "European AI company focused on efficient, high-performance models for coding and multilingual tasks.",
+    "price": 20,
+    "isFree": false,
+    "category": "model",
+    "image": "/assets/logos/mistral-logo.png",
+    "status": "favourite"
+  },
+  {
+    "id": 9,
+    "slug": "meta-ai",
+    "title": "Meta AI",
+    "description": "Meta's AI assistant built on Llama models, integrated across WhatsApp, Instagram, and Facebook.",
+    "price": 0,
+    "isFree": true,
+    "category": "assistant",
+    "image": "/assets/logos/meta-ai-logo.png",
+    "status": "popular"
+  },
+  {
+    "id": 10,
+    "slug": "qwen",
+    "title": "Qwen",
+    "description": "Alibaba's advanced AI models excelling in coding, reasoning, and multilingual capabilities.",
+    "price": 0,
+    "isFree": true,
+    "category": "model",
+    "image": "/assets/logos/qwen-logo.jpg",
+    "status": "trending"
+  },
+  {
+    "id": 11,
+    "slug": "copilot",
+    "title": "Copilot",
+    "description": "Microsoft's AI assistant integrated into Windows and Office, powered by advanced GPT models.",
+    "price": 20,
+    "isFree": false,
+    "category": "assistant",
+    "image": "/assets/logos/copilot-logo.png",
+    "status": "popular"
+  }
+]
